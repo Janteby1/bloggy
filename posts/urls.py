@@ -5,8 +5,5 @@ from posts import views
 urlpatterns = patterns('',
 	url(r'^$', views.index, name='index'),
     url(r'^create$', views.create, name="create"),
-
-    # Examples:
-    # url(r'^$', 'project.views.home', name='home'),
-    # url(r'^blog/', include('blog.urls')),
+    url(r'^edit/(?P<post_id>[0-9]+)$', views.edit, name="edit"),
 )

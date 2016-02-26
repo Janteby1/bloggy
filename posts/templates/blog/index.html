@@ -2,21 +2,13 @@
 
 {% block content %}
 
-<!--     <form action="{% url 'posts:create' %}" method="GET">
-        {% csrf_token %}
-            {% for field in create_post_form %}
-                <div class="{%if field.errors %}error{%endif%}">
-                    {{field.label_tag}}{{ field }}
-                </div>
-                {% for error in field.errors %}
-                    <small class="error">{{ error }}</small>
-                {% endfor %}
-            {% endfor %}
-        <input type="submit" class="button" value="Add Post" />
-    </form>
- -->
+<h3>  <a href="{% url 'posts:create' %}"> Create</a> </h3>
 
- <a href="{% url 'posts:create' %}"> Create</a>
- 
+    {% for post in posts %}
+        <p><a href="/posts/edit/{{ post.id }}">
+            <p>{{ post.title }} </p>
+        </a></p>
+    {% endfor %}
+
 {% endblock content %}
 

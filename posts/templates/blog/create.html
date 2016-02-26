@@ -4,7 +4,7 @@
 
     <form action="{% url 'posts:create' %}" method="POST">
         {% csrf_token %}
-            {% for field in create_post_form %}
+            {% for field in PostForm %}
                 <div class="{%if field.errors %}error{%endif%}">
                     {{field.label_tag}}{{ field }}
                 </div>
@@ -12,7 +12,7 @@
                     <small class="error">{{ error }}</small>
                 {% endfor %}
             {% endfor %}
-        <input type="submit" class="button" value="Add Post" />
+        <input type="submit" class="button" value="Add Post"/>
     </form>
 
 {% endblock content %}

@@ -6,14 +6,13 @@ import pudb
 
 # Create your views here.
 def index(request):
-    # if request.method == 'GET': 
-    #     # this line gets all the todos that we have in the db
-    #     todos = Todo.objects.all()
-    #     # creates them into a context dict
-    #     context = {'todos': todos}
-    #     # send them all to the db
-    return render(request, 'blog/index.html')
-
+    if request.method == 'GET': 
+        # this line gets all the todos that we have in the db
+        posts = Post.objects.all().order_by('-updated_at')
+        # creates them into a context dict
+        context = {'posts': posts}
+        # send them all to the db
+    return render(request, 'blog/index.html', context)
 
 def create(request):
     # pu.db
@@ -32,12 +31,37 @@ def create(request):
         else:
             context = {
                 # "post": post,
-                "create_post_form": form,
+                "PostForm": form,
             }
             return render(request, 'blog/create.html', context)
     else:
         return HttpResponseNotAllowed(['GET', 'POST'])
 
 
+def edit(request, post_id):
+    # pu.db
+    post = Post.objects.get(id=post_id)
+    # post = get_object_or_404(Post, id=id)
+    if request.method == "GET":
+        form = PostForm(instance =post)
+        context = {
+            "post": post,
+            "EditForm": form,
+        }
+        return render (request, "blog/edit.html", context)
+
+    elif request.method == "POST":
+        form = PostForm(data=request.POST, instance =post)
+        if form.is_valid():
+            form.save()
+            return redirect("posts:index")
+        else:
+            context = {
+                "post": post,
+                "EditForm": form,
+            }
+            return render(request, 'blog/edit.html', context)
+    else:
+        return HttpResponseNotAllowed(['GET', 'POST'])
 
 
