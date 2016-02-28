@@ -2,13 +2,22 @@
 
 {% block content %}
 
-<h3>  <a href="{% url 'posts:create' %}"> Create</a> </h3>
-
     {% for post in posts %}
-        <p><a href="/posts/edit/{{ post.id }}">
-            <p>{{ post.title }} </p>
-        </a></p>
+        {% if post.show == True %}
+
+        <div class=post>
+            <p><a href="/posts/edit/{{ post.slug }}">
+                <p class=title>{{ post.title }} </p>
+            </a></p>
+            <p class=content>{{ post.content }}</p>
+            <p class=date>{{ post.created_at }}</p>
+        </div>
+
+        {% endif %}
     {% endfor %}
+
+<h3> <a class=button href="{% url 'posts:create' %}"> Create New Post</a> </h3>
+<br>
 
 {% endblock content %}
 

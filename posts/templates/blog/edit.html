@@ -2,7 +2,9 @@
 
 {% block content %}
 
-    <form action="{% url 'posts:edit' post_id=post.id %}" method="POST">
+    <h3>Edit things here:</h3>
+
+    <form action="{% url 'posts:edit' post_slug=post.slug %}" method="POST">
         {% csrf_token %}
 
         {% for field in EditForm %}
@@ -15,6 +17,11 @@
         {% endfor %}
 
         <input type="submit" class="button" value="Edit Post" />
+    </form>
+
+    <form action="{% url 'posts:delete' post_slug=post.slug %}" method ="POST">
+        {% csrf_token %}
+        <input type="submit" class="button" id= "delete" value="Delete Post" />
     </form>
 
 {% endblock content %}

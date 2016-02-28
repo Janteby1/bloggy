@@ -1,0 +1,80 @@
+h1 {
+	color: blue;
+	font-style: italic;
+	text-align: center;
+	margin: 15px;
+	background-color: 
+}
+
+.container h3 a {
+	color: white;
+	background-color: red;
+	border-radius: 50px;
+	text-align: center;
+	display: block;
+	font-size: 20px;
+	margin-left: 10px;
+}
+
+.title a{
+	color: blue;
+	display: block;
+	margin-left: 30px;
+	margin-top: 20px;
+	font-size: 20px;
+	padding: 4px;
+	font-weight: bold;
+}
+
+.content {
+	color: black;
+	display: block;
+	border: solid black 1px;
+	margin-left: 40px;
+	margin-right: 40px;
+	padding: 10px;
+	text-align: justify;
+}
+
+.date{
+	color: black;
+	display: block;
+	margin-left: 15px;
+	font-style: italic;
+	font-size: 15px;
+}
+
+.post {
+	background-color: #DCDCDC;
+	margin: 3px;
+	border-radius: 20px;
+}
+
+#delete {
+	background-color: red;
+	float: right;
+	margin-right: 40px;
+	font-weight: bold;
+}
+
+.button{
+	margin-right: 15px;
+}
+
+form {
+	margin-left: 10px;
+}
+
+#id_content {
+	height: 150px;
+}
+
+
+/*
+need to fix the date time 
+need to wrap the text in the content text box 
+*/
+
+
+
+

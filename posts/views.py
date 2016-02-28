@@ -38,9 +38,9 @@ def create(request):
         return HttpResponseNotAllowed(['GET', 'POST'])
 
 
-def edit(request, post_id):
+def edit(request, post_slug):
     # pu.db
-    post = Post.objects.get(id=post_id)
+    post = Post.objects.get(slug=post_slug)
     # post = get_object_or_404(Post, id=id)
     if request.method == "GET":
         form = PostForm(instance =post)
@@ -63,5 +63,19 @@ def edit(request, post_id):
             return render(request, 'blog/edit.html', context)
     else:
         return HttpResponseNotAllowed(['GET', 'POST'])
+
+
+def delete (request, post_slug):
+    # this syntax is if we want to delete a post 
+    if request.method == 'POST':
+        post = Post.objects.get(slug=post_slug)
+        post.show = False
+        post.save()
+        return redirect('posts:index')
+
+
+
+
+
 
 
